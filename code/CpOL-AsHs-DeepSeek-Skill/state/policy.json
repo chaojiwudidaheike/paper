@@ -1,0 +1,18 @@
+{
+  "formulas": {
+    "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+    "pair": "pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy)",
+    "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+    "imbalance": "imbalance",
+    "move": "move",
+    "energy_risk": "energy_risk"
+  },
+  "weights": {
+    "task": 0.3,
+    "pair": 0.36,
+    "charge": 0.16,
+    "imbalance": 0.04,
+    "move": 0.04,
+    "energy_risk": 0.1
+  }
+}

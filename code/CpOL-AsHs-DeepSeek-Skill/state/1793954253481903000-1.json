@@ -1,0 +1,2408 @@
+{
+  "dataset": "/Users/yfjiazi/res-project/LLM-MDC/MDC/data/Mat/BicycleOrder.mat",
+  "scope": 14,
+  "time_limit": 150,
+  "interval": 10,
+  "model": "deepseek-flash",
+  "policy": {
+    "formulas": {
+      "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+      "pair": "pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy)",
+      "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+      "imbalance": "imbalance",
+      "move": "move",
+      "energy_risk": "energy_risk"
+    },
+    "weights": {
+      "task": 0.3,
+      "pair": 0.36,
+      "charge": 0.16,
+      "imbalance": 0.04,
+      "move": 0.04,
+      "energy_risk": 0.1
+    }
+  },
+  "select_max_tokens": 4096,
+  "evolve_max_tokens": 16384,
+  "episode": 1,
+  "session": 1793954253481903000,
+  "run": {
+    "completed": 67,
+    "total": 99,
+    "rate": 0.6767676767676768,
+    "seconds": 43.05267529201228,
+    "history": [
+      {
+        "step": 1,
+        "completed": 1,
+        "decision": {
+          "position": [
+            0,
+            0
+          ],
+          "reason": "All candidates tie: identical task/pair scores (1.0 normalized each before penalties) and zero charge/move/energy_risk; pick first listed by tie rule.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            0,
+            0
+          ],
+          "features": {
+            "task": 1.0,
+            "pair": 1.0,
+            "charge": 0.0,
+            "imbalance": 0.3333333322222222,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 2.0,
+            "cars": 0.0,
+            "uavs": 0.0,
+            "remaining": 99.0,
+            "time_left": 150.0,
+            "triples": 2.0,
+            "mean_duration": 37.9999999813736,
+            "mean_energy": 0.05555555555555555,
+            "mean_slack": 39.999999951571205
+          },
+          "components": {
+            "task": 0.8173326415154853,
+            "pair": 1.1822302624203183,
+            "charge": 0.0,
+            "imbalance": 0.3333333322222222,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999877650795,
+            "pair": 0.9999999915414111,
+            "charge": 0.0,
+            "imbalance": 0.3333333322222222,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.646666659995543
+        }
+      },
+      {
+        "step": 2,
+        "completed": 1,
+        "decision": {
+          "position": [
+            0,
+            0
+          ],
+          "reason": "All candidates score 0 on task/pair/charge/energy_risk; [0,0] alone avoids the move penalty (score 0.0) and ranks first. Note: step 1 completed only 1 task, so scores are poor.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            0,
+            0
+          ],
+          "features": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 1.0,
+            "cars": 0.0,
+            "uavs": 0.0,
+            "remaining": 98.0,
+            "time_left": 140.0,
+            "triples": 0.0,
+            "mean_duration": 0.0,
+            "mean_energy": 0.0,
+            "mean_slack": 0.0
+          },
+          "components": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.0
+        }
+      },
+      {
+        "step": 3,
+        "completed": 2,
+        "decision": {
+          "position": [
+            0,
+            0
+          ],
+          "reason": "Top score 0.628: identical task/pair potential but zero move penalty, so [0,0] wins. Only 1 task completed at steps 1-2, flagging weak progress for evolution.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            0,
+            0
+          ],
+          "features": {
+            "task": 5.0,
+            "pair": 1.0,
+            "charge": 0.0,
+            "imbalance": 0.7999999992,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 2.0,
+            "cars": 2.0,
+            "uavs": 0.0,
+            "remaining": 98.0,
+            "time_left": 130.0,
+            "triples": 9.0,
+            "mean_duration": 94.00000001490132,
+            "mean_energy": 0.04467507800841134,
+            "mean_slack": 35.9999999850987
+          },
+          "components": {
+            "task": 2.9802123550456856,
+            "pair": 1.3140033890658982,
+            "charge": 0.0,
+            "imbalance": 0.7999999992,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999966445344,
+            "pair": 0.9999999923896696,
+            "charge": 0.0,
+            "imbalance": 0.7999999992,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6279999962856414
+        }
+      },
+      {
+        "step": 4,
+        "completed": 4,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.633: region [1,0] keeps task/pair potentials maxed (97 tasks, pair 4) with the smallest move penalty, and zero charge/energy risk. Note only ~2 tasks/3 steps so far, weak throughput.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 97.0,
+            "pair": 4.0,
+            "charge": 0.0,
+            "imbalance": 0.5882352939446367,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0,
+            "workers": 5.0,
+            "cars": 1.0,
+            "uavs": 1.0,
+            "remaining": 97.0,
+            "time_left": 120.0,
+            "triples": 485.0,
+            "mean_duration": 42.2969072166792,
+            "mean_energy": 0.21827662600858477,
+            "mean_slack": 54.395876266768916
+          },
+          "components": {
+            "task": 73.01509404694845,
+            "pair": 7.612928396354353,
+            "charge": 0.0,
+            "imbalance": 0.5882352939446367,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999998630421,
+            "pair": 0.9999999986864451,
+            "charge": 0.0,
+            "imbalance": 0.5882352939446367,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0
+          },
+          "score": 0.6328928789642477
+        }
+      },
+      {
+        "step": 5,
+        "completed": 5,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.633: [1,0] keeps task/pair potentials at max (95 tasks, pair 3) with the largest commandable coverage and zero move penalty; charge/energy risk are zero. Weak throughput persists (~4 tasks/4 steps).",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 95.0,
+            "pair": 3.0,
+            "charge": 0.0,
+            "imbalance": 0.6774193546201873,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 5.0,
+            "cars": 1.0,
+            "uavs": 1.0,
+            "remaining": 95.0,
+            "time_left": 110.0,
+            "triples": 441.0,
+            "mean_duration": 32.93197278943666,
+            "mean_energy": 0.2014808446781236,
+            "mean_slack": 56.98639453879965
+          },
+          "components": {
+            "task": 74.37254576804301,
+            "pair": 5.698911881238376,
+            "charge": 0.0,
+            "imbalance": 0.6774193546201873,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999998655419,
+            "pair": 0.9999999982452791,
+            "charge": 0.0,
+            "imbalance": 0.6774193546201873,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6329032251431554
+        }
+      },
+      {
+        "step": 6,
+        "completed": 8,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.636: [1,0] keeps task and pair potentials at max with zero move penalty; imbalance identical across candidates. Throughput still weak (~5 tasks/6 steps), noted for evolution.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 94.0,
+            "pair": 5.0,
+            "charge": 0.0,
+            "imbalance": 0.5714285712244898,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 7.0,
+            "cars": 1.0,
+            "uavs": 3.0,
+            "remaining": 94.0,
+            "time_left": 100.0,
+            "triples": 1715.0,
+            "mean_duration": 29.168513119863704,
+            "mean_energy": 0.19675728343059937,
+            "mean_slack": 56.998250731387195
+          },
+          "components": {
+            "task": 74.02790062899918,
+            "pair": 11.640821778523048,
+            "charge": 0.0,
+            "imbalance": 0.5714285712244898,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9966143469234908,
+            "pair": 0.999999999140954,
+            "charge": 0.0,
+            "imbalance": 0.5714285712244898,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.636127160918811
+        }
+      },
+      {
+        "step": 7,
+        "completed": 11,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.64: [1,0] keeps task and pair potentials maximal (91 tasks, 1712 triples, 8 workers/3 UAVs) with zero move penalty and no charge/energy risk. Throughput remains weak (~8 tasks/7 steps), noted for evolution.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 91.0,
+            "pair": 5.0,
+            "charge": 0.0,
+            "imbalance": 0.49999999979166665,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 8.0,
+            "cars": 1.0,
+            "uavs": 3.0,
+            "remaining": 91.0,
+            "time_left": 90.0,
+            "triples": 1712.0,
+            "mean_duration": 33.25700933705781,
+            "mean_energy": 0.20460724323089052,
+            "mean_slack": 49.193925252682725
+          },
+          "components": {
+            "task": 67.77032154431734,
+            "pair": 11.949863901334279,
+            "charge": 0.0,
+            "imbalance": 0.49999999979166665,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999998524429,
+            "pair": 0.9999999991631703,
+            "charge": 0.0,
+            "imbalance": 0.49999999979166665,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6399999996628075
+        }
+      },
+      {
+        "step": 8,
+        "completed": 13,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Highest score 0.632: [1,0] maximizes task and pair potentials with zero move penalty and no charge/energy risk; imbalance is the main penalty. Throughput remains weak, noted for evolution.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 88.0,
+            "pair": 4.0,
+            "charge": 0.0,
+            "imbalance": 0.5294117643944637,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 7.0,
+            "cars": 1.0,
+            "uavs": 3.0,
+            "remaining": 88.0,
+            "time_left": 80.0,
+            "triples": 1777.0,
+            "mean_duration": 32.68036014783748,
+            "mean_energy": 0.21863249382130998,
+            "mean_slack": 43.36240857821572
+          },
+          "components": {
+            "task": 63.88595942584681,
+            "pair": 9.283213825656425,
+            "charge": 0.0,
+            "imbalance": 0.5294117643944637,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9757021023176002,
+            "pair": 0.9999999989227868,
+            "charge": 0.0,
+            "imbalance": 0.5294117643944637,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6315341597317048
+        }
+      },
+      {
+        "step": 9,
+        "completed": 19,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.635: [1,0] maximizes task (0.966) and pair (1.0) potentials with zero move penalty; imbalance 0.36 is the main drag. Throughput still low (~13 by step 8), noted for evolution.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 86.0,
+            "pair": 7.0,
+            "charge": 0.0,
+            "imbalance": 0.36363636347107436,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 12.0,
+            "cars": 1.0,
+            "uavs": 6.0,
+            "remaining": 86.0,
+            "time_left": 70.0,
+            "triples": 5400.0,
+            "mean_duration": 34.721296303196354,
+            "mean_energy": 0.25517913611188464,
+            "mean_slack": 33.332037037388965
+          },
+          "components": {
+            "task": 59.160329798644575,
+            "pair": 21.045022004662496,
+            "charge": 0.0,
+            "imbalance": 0.36363636347107436,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9657599961164339,
+            "pair": 0.9999999995248282,
+            "charge": 0.0,
+            "imbalance": 0.36363636347107436,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6351825441250254
+        }
+      },
+      {
+        "step": 10,
+        "completed": 26,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Highest score 0.641: [1,0] keeps task/pair potentials maximal (80 tasks, 4616 triples, 10 workers/7 UAVs) with zero move penalty and no charge/energy risk; imbalance 0.30 is the only drag. Prior throughput gains accelerating.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 80.0,
+            "pair": 7.0,
+            "charge": 0.0,
+            "imbalance": 0.29999999985,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 10.0,
+            "cars": 7.0,
+            "uavs": 7.0,
+            "remaining": 80.0,
+            "time_left": 60.0,
+            "triples": 4616.0,
+            "mean_duration": 32.404029463389584,
+            "mean_energy": 0.2539963743486388,
+            "mean_slack": 25.937391686636662
+          },
+          "components": {
+            "task": 53.87417627370132,
+            "pair": 20.387888083414918,
+            "charge": 0.0,
+            "imbalance": 0.29999999985,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9781410015313569,
+            "pair": 0.9999999995095127,
+            "charge": 0.0,
+            "imbalance": 0.29999999985,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6414423002888316
+        }
+      },
+      {
+        "step": 11,
+        "completed": 36,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.651: [1,0] maximizes task and pair potentials (0.99/1.0) with zero move penalty and no charge or energy risk; imbalance 0.13 is the only drag.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 73.0,
+            "pair": 10.0,
+            "charge": 0.0,
+            "imbalance": 0.13043478255198487,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 11.0,
+            "cars": 8.0,
+            "uavs": 10.0,
+            "remaining": 73.0,
+            "time_left": 50.0,
+            "triples": 5887.0,
+            "mean_duration": 30.825887548969305,
+            "mean_energy": 0.2602074229173651,
+            "mean_slack": 17.976558528736845
+          },
+          "components": {
+            "task": 47.53851376779746,
+            "pair": 32.27301625761121,
+            "charge": 0.0,
+            "imbalance": 0.13043478255198487,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9867239128413556,
+            "pair": 0.9999999996901436,
+            "charge": 0.0,
+            "imbalance": 0.13043478255198487,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.650799782438779
+        }
+      },
+      {
+        "step": 12,
+        "completed": 46,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top score 0.656: [1,0] maximizes task (0.992) and pair (1.0) potentials with zero move, charge and energy risk; imbalance 0.043 is the only drag. Throughput improving (~36 by step 11).",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 63.0,
+            "pair": 11.0,
+            "charge": 0.0,
+            "imbalance": 0.04347826085066162,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 14.0,
+            "cars": 6.0,
+            "uavs": 11.0,
+            "remaining": 63.0,
+            "time_left": 40.0,
+            "triples": 4067.0,
+            "mean_duration": 28.06909269056552,
+            "mean_energy": 0.26957831010552763,
+            "mean_slack": 10.937300236984075
+          },
+          "components": {
+            "task": 40.12251230479283,
+            "pair": 37.74049045585949,
+            "charge": 0.0,
+            "imbalance": 0.04347826085066162,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9922427744836996,
+            "pair": 0.9999999997350326,
+            "charge": 0.0,
+            "imbalance": 0.04347826085066162,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6559337018156951
+        }
+      },
+      {
+        "step": 13,
+        "completed": 54,
+        "decision": {
+          "position": [
+            2,
+            0
+          ],
+          "reason": "Top score 0.652: [2,0] keeps task 0.999 and pair 1.0 maximal with 14 workers/10 UAVs and lowest move penalty (0.089); no charge or energy risk, imbalance 0.09 minor.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            2,
+            0
+          ],
+          "features": {
+            "task": 53.0,
+            "pair": 10.0,
+            "charge": 0.0,
+            "imbalance": 0.09090909086776859,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0,
+            "workers": 14.0,
+            "cars": 6.0,
+            "uavs": 10.0,
+            "remaining": 53.0,
+            "time_left": 30.0,
+            "triples": 1276.0,
+            "mean_duration": 21.944357369448344,
+            "mean_energy": 0.28834840137420487,
+            "mean_slack": 7.256269592777235
+          },
+          "components": {
+            "task": 34.31712337983065,
+            "pair": 31.3579437221572,
+            "charge": 0.0,
+            "imbalance": 0.09090909086776859,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9985621582318354,
+            "pair": 0.9999999996811015,
+            "charge": 0.0,
+            "imbalance": 0.09090909086776859,
+            "move": 0.08944271909999159,
+            "energy_risk": 0.0
+          },
+          "score": 0.6523545749560368
+        }
+      },
+      {
+        "step": 14,
+        "completed": 64,
+        "decision": {
+          "position": [
+            4,
+            0
+          ],
+          "reason": "Top-ranked score 0.651: task and pair both saturate (1.0/1.0) with 20 workers/13 UAVs; zero charge risk and minimal move penalty (0.179) vs [4,1]. Imbalance 0.04 is the only drag.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            4,
+            0
+          ],
+          "features": {
+            "task": 37.0,
+            "pair": 12.0,
+            "charge": 0.0,
+            "imbalance": 0.039999999984,
+            "move": 0.17888543819998318,
+            "energy_risk": 0.0,
+            "workers": 20.0,
+            "cars": 6.0,
+            "uavs": 13.0,
+            "remaining": 45.0,
+            "time_left": 20.0,
+            "triples": 463.0,
+            "mean_duration": 16.203023757938443,
+            "mean_energy": 0.266957885108776,
+            "mean_slack": 3.36933045676603
+          },
+          "components": {
+            "task": 25.118408316516202,
+            "pair": 42.1222236574781,
+            "charge": 0.0,
+            "imbalance": 0.039999999984,
+            "move": 0.17888543819998318,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999996018856,
+            "pair": 0.9999999997625956,
+            "charge": 0.0,
+            "imbalance": 0.039999999984,
+            "move": 0.17888543819998318,
+            "energy_risk": 0.0
+          },
+          "score": 0.6512445822677407
+        }
+      },
+      {
+        "step": 15,
+        "completed": 67,
+        "decision": {
+          "position": [
+            4,
+            0
+          ],
+          "reason": "Top-ranked 0.647: max task and pair (both ~1.0), zero charge/energy risk, imbalance 0.333 only drag; move 0 is best. Recent completions 46-64 rising.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            4,
+            0
+          ],
+          "features": {
+            "task": 5.0,
+            "pair": 3.0,
+            "charge": 0.0,
+            "imbalance": 0.3333333329629629,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 30.0,
+            "cars": 6.0,
+            "uavs": 13.0,
+            "remaining": 35.0,
+            "time_left": 10.0,
+            "triples": 10.0,
+            "mean_duration": 9.2,
+            "mean_energy": 0.16355340895663478,
+            "mean_slack": 0.8
+          },
+          "components": {
+            "task": 4.050925925925926,
+            "pair": 9.719277308503324,
+            "charge": 0.0,
+            "imbalance": 0.3333333329629629,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999975314285,
+            "pair": 0.9999999989711168,
+            "charge": 0.0,
+            "imbalance": 0.3333333329629629,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.6466666655705121
+        }
+      }
+    ]
+  },
+  "proposal": {
+    "policy": {
+      "formulas": {
+        "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1)) + 0.05 * (workers + uavs + cars) / (1 + task)",
+        "pair": "pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy) + 0.05 * (workers + uavs + cars) / (1 + pair)",
+        "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+        "imbalance": "imbalance",
+        "move": "move",
+        "energy_risk": "energy_risk"
+      },
+      "weights": {
+        "task": 0.3,
+        "pair": 0.36,
+        "charge": 0.16,
+        "imbalance": 0.04,
+        "move": 0.04,
+        "energy_risk": 0.1
+      }
+    },
+    "reason": "Early steps had task=pair=0 ties broken only by move, wasting agent coverage. Add suppressed fleet-size tie-breaker to task/pair so zero-feasibility states still command more agents; late steps unaffected. Unverified until replay."
+  },
+  "evaluation": {
+    "accepted": false,
+    "baseline": {
+      "completed": 67,
+      "total": 99,
+      "rate": 0.6767676767676768,
+      "seconds": 21.1528366249986,
+      "history": [
+        {
+          "step": 1,
+          "completed": 1,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 1.0,
+              "pair": 1.0,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 2.0,
+              "cars": 0.0,
+              "uavs": 0.0,
+              "remaining": 99.0,
+              "time_left": 150.0,
+              "triples": 2.0,
+              "mean_duration": 37.9999999813736,
+              "mean_energy": 0.05555555555555555,
+              "mean_slack": 39.999999951571205
+            },
+            "components": {
+              "task": 0.8173326415154853,
+              "pair": 1.1822302624203183,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999877650795,
+              "pair": 0.9999999915414111,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.646666659995543
+          }
+        },
+        {
+          "step": 2,
+          "completed": 1,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 0.0,
+              "pair": 0.0,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 1.0,
+              "cars": 0.0,
+              "uavs": 0.0,
+              "remaining": 98.0,
+              "time_left": 140.0,
+              "triples": 0.0,
+              "mean_duration": 0.0,
+              "mean_energy": 0.0,
+              "mean_slack": 0.0
+            },
+            "components": {
+              "task": 0.0,
+              "pair": 0.0,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.0,
+              "pair": 0.0,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.0
+          }
+        },
+        {
+          "step": 3,
+          "completed": 2,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 5.0,
+              "pair": 1.0,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 2.0,
+              "cars": 2.0,
+              "uavs": 0.0,
+              "remaining": 98.0,
+              "time_left": 130.0,
+              "triples": 9.0,
+              "mean_duration": 94.00000001490132,
+              "mean_energy": 0.04467507800841134,
+              "mean_slack": 35.9999999850987
+            },
+            "components": {
+              "task": 2.9802123550456856,
+              "pair": 1.3140033890658982,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999966445344,
+              "pair": 0.9999999923896696,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6279999962856414
+          }
+        },
+        {
+          "step": 4,
+          "completed": 4,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 97.0,
+              "pair": 4.0,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0,
+              "workers": 5.0,
+              "cars": 1.0,
+              "uavs": 1.0,
+              "remaining": 97.0,
+              "time_left": 120.0,
+              "triples": 485.0,
+              "mean_duration": 42.2969072166792,
+              "mean_energy": 0.21827662600858477,
+              "mean_slack": 54.395876266768916
+            },
+            "components": {
+              "task": 73.01509404694845,
+              "pair": 7.612928396354353,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999998630421,
+              "pair": 0.9999999986864451,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "score": 0.6328928789642477
+          }
+        },
+        {
+          "step": 5,
+          "completed": 5,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 95.0,
+              "pair": 3.0,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 5.0,
+              "cars": 1.0,
+              "uavs": 1.0,
+              "remaining": 95.0,
+              "time_left": 110.0,
+              "triples": 441.0,
+              "mean_duration": 32.93197278943666,
+              "mean_energy": 0.2014808446781236,
+              "mean_slack": 56.98639453879965
+            },
+            "components": {
+              "task": 74.37254576804301,
+              "pair": 5.698911881238376,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999998655419,
+              "pair": 0.9999999982452791,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6329032251431554
+          }
+        },
+        {
+          "step": 6,
+          "completed": 8,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 94.0,
+              "pair": 5.0,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 7.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 94.0,
+              "time_left": 100.0,
+              "triples": 1715.0,
+              "mean_duration": 29.168513119863704,
+              "mean_energy": 0.19675728343059937,
+              "mean_slack": 56.998250731387195
+            },
+            "components": {
+              "task": 74.02790062899918,
+              "pair": 11.640821778523048,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9966143469234908,
+              "pair": 0.999999999140954,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.636127160918811
+          }
+        },
+        {
+          "step": 7,
+          "completed": 11,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 91.0,
+              "pair": 5.0,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 8.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 91.0,
+              "time_left": 90.0,
+              "triples": 1712.0,
+              "mean_duration": 33.25700933705781,
+              "mean_energy": 0.20460724323089052,
+              "mean_slack": 49.193925252682725
+            },
+            "components": {
+              "task": 67.77032154431734,
+              "pair": 11.949863901334279,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999998524429,
+              "pair": 0.9999999991631703,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6399999996628075
+          }
+        },
+        {
+          "step": 8,
+          "completed": 13,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 88.0,
+              "pair": 4.0,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 7.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 88.0,
+              "time_left": 80.0,
+              "triples": 1777.0,
+              "mean_duration": 32.68036014783748,
+              "mean_energy": 0.21863249382130998,
+              "mean_slack": 43.36240857821572
+            },
+            "components": {
+              "task": 63.88595942584681,
+              "pair": 9.283213825656425,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9757021023176002,
+              "pair": 0.9999999989227868,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6315341597317048
+          }
+        },
+        {
+          "step": 9,
+          "completed": 19,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 86.0,
+              "pair": 7.0,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 12.0,
+              "cars": 1.0,
+              "uavs": 6.0,
+              "remaining": 86.0,
+              "time_left": 70.0,
+              "triples": 5400.0,
+              "mean_duration": 34.721296303196354,
+              "mean_energy": 0.25517913611188464,
+              "mean_slack": 33.332037037388965
+            },
+            "components": {
+              "task": 59.160329798644575,
+              "pair": 21.045022004662496,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9657599961164339,
+              "pair": 0.9999999995248282,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6351825441250254
+          }
+        },
+        {
+          "step": 10,
+          "completed": 26,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 80.0,
+              "pair": 7.0,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 10.0,
+              "cars": 7.0,
+              "uavs": 7.0,
+              "remaining": 80.0,
+              "time_left": 60.0,
+              "triples": 4616.0,
+              "mean_duration": 32.404029463389584,
+              "mean_energy": 0.2539963743486388,
+              "mean_slack": 25.937391686636662
+            },
+            "components": {
+              "task": 53.87417627370132,
+              "pair": 20.387888083414918,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9781410015313569,
+              "pair": 0.9999999995095127,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6414423002888316
+          }
+        },
+        {
+          "step": 11,
+          "completed": 36,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 73.0,
+              "pair": 10.0,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 11.0,
+              "cars": 8.0,
+              "uavs": 10.0,
+              "remaining": 73.0,
+              "time_left": 50.0,
+              "triples": 5887.0,
+              "mean_duration": 30.825887548969305,
+              "mean_energy": 0.2602074229173651,
+              "mean_slack": 17.976558528736845
+            },
+            "components": {
+              "task": 47.53851376779746,
+              "pair": 32.27301625761121,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9867239128413556,
+              "pair": 0.9999999996901436,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.650799782438779
+          }
+        },
+        {
+          "step": 12,
+          "completed": 46,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 63.0,
+              "pair": 11.0,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 14.0,
+              "cars": 6.0,
+              "uavs": 11.0,
+              "remaining": 63.0,
+              "time_left": 40.0,
+              "triples": 4067.0,
+              "mean_duration": 28.06909269056552,
+              "mean_energy": 0.26957831010552763,
+              "mean_slack": 10.937300236984075
+            },
+            "components": {
+              "task": 40.12251230479283,
+              "pair": 37.74049045585949,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9922427744836996,
+              "pair": 0.9999999997350326,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6559337018156951
+          }
+        },
+        {
+          "step": 13,
+          "completed": 54,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              2,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              2,
+              0
+            ],
+            "features": {
+              "task": 53.0,
+              "pair": 10.0,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0,
+              "workers": 14.0,
+              "cars": 6.0,
+              "uavs": 10.0,
+              "remaining": 53.0,
+              "time_left": 30.0,
+              "triples": 1276.0,
+              "mean_duration": 21.944357369448344,
+              "mean_energy": 0.28834840137420487,
+              "mean_slack": 7.256269592777235
+            },
+            "components": {
+              "task": 34.31712337983065,
+              "pair": 31.3579437221572,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9985621582318354,
+              "pair": 0.9999999996811015,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "score": 0.6523545749560368
+          }
+        },
+        {
+          "step": 14,
+          "completed": 64,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              4,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              4,
+              0
+            ],
+            "features": {
+              "task": 37.0,
+              "pair": 12.0,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0,
+              "workers": 20.0,
+              "cars": 6.0,
+              "uavs": 13.0,
+              "remaining": 45.0,
+              "time_left": 20.0,
+              "triples": 463.0,
+              "mean_duration": 16.203023757938443,
+              "mean_energy": 0.266957885108776,
+              "mean_slack": 3.36933045676603
+            },
+            "components": {
+              "task": 25.118408316516202,
+              "pair": 42.1222236574781,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999996018856,
+              "pair": 0.9999999997625956,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0
+            },
+            "score": 0.6512445822677407
+          }
+        },
+        {
+          "step": 15,
+          "completed": 67,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              4,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              4,
+              0
+            ],
+            "features": {
+              "task": 5.0,
+              "pair": 3.0,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 30.0,
+              "cars": 6.0,
+              "uavs": 13.0,
+              "remaining": 35.0,
+              "time_left": 10.0,
+              "triples": 10.0,
+              "mean_duration": 9.2,
+              "mean_energy": 0.16355340895663478,
+              "mean_slack": 0.8
+            },
+            "components": {
+              "task": 4.050925925925926,
+              "pair": 9.719277308503324,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999975314285,
+              "pair": 0.9999999989711168,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6466666655705121
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "completed": 67,
+      "total": 99,
+      "rate": 0.6767676767676768,
+      "seconds": 21.020050707971677,
+      "history": [
+        {
+          "step": 1,
+          "completed": 1,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 1.0,
+              "pair": 1.0,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 2.0,
+              "cars": 0.0,
+              "uavs": 0.0,
+              "remaining": 99.0,
+              "time_left": 150.0,
+              "triples": 2.0,
+              "mean_duration": 37.9999999813736,
+              "mean_energy": 0.05555555555555555,
+              "mean_slack": 39.999999951571205
+            },
+            "components": {
+              "task": 0.8673326415154854,
+              "pair": 1.2322302624203183,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999884703983,
+              "pair": 0.9999999918846337,
+              "charge": 0.0,
+              "imbalance": 0.3333333322222222,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6466666603306988
+          }
+        },
+        {
+          "step": 2,
+          "completed": 1,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 0.0,
+              "pair": 0.0,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 1.0,
+              "cars": 0.0,
+              "uavs": 0.0,
+              "remaining": 98.0,
+              "time_left": 140.0,
+              "triples": 0.0,
+              "mean_duration": 0.0,
+              "mean_energy": 0.0,
+              "mean_slack": 0.0
+            },
+            "components": {
+              "task": 0.05,
+              "pair": 0.05,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.99999980000004,
+              "pair": 0.99999980000004,
+              "charge": 0.0,
+              "imbalance": 0.0,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6599998680000263
+          }
+        },
+        {
+          "step": 3,
+          "completed": 2,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              0,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              0,
+              0
+            ],
+            "features": {
+              "task": 5.0,
+              "pair": 1.0,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 2.0,
+              "cars": 2.0,
+              "uavs": 0.0,
+              "remaining": 98.0,
+              "time_left": 130.0,
+              "triples": 9.0,
+              "mean_duration": 94.00000001490132,
+              "mean_energy": 0.04467507800841134,
+              "mean_slack": 35.9999999850987
+            },
+            "components": {
+              "task": 3.013545688379019,
+              "pair": 1.4140033890658983,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999966816498,
+              "pair": 0.9999999929278812,
+              "charge": 0.0,
+              "imbalance": 0.7999999992,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6279999964905322
+          }
+        },
+        {
+          "step": 4,
+          "completed": 4,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 97.0,
+              "pair": 4.0,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0,
+              "workers": 5.0,
+              "cars": 1.0,
+              "uavs": 1.0,
+              "remaining": 97.0,
+              "time_left": 120.0,
+              "triples": 485.0,
+              "mean_duration": 42.2969072166792,
+              "mean_energy": 0.21827662600858477,
+              "mean_slack": 54.395876266768916
+            },
+            "components": {
+              "task": 73.01866547551988,
+              "pair": 7.682928396354353,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999998630488,
+              "pair": 0.9999999986984129,
+              "charge": 0.0,
+              "imbalance": 0.5882352939446367,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "score": 0.6328928789685582
+          }
+        },
+        {
+          "step": 5,
+          "completed": 5,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 95.0,
+              "pair": 3.0,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 5.0,
+              "cars": 1.0,
+              "uavs": 1.0,
+              "remaining": 95.0,
+              "time_left": 110.0,
+              "triples": 441.0,
+              "mean_duration": 32.93197278943666,
+              "mean_energy": 0.2014808446781236,
+              "mean_slack": 56.98639453879965
+            },
+            "components": {
+              "task": 74.37619160137635,
+              "pair": 5.786411881238377,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999998655484,
+              "pair": 0.9999999982718133,
+              "charge": 0.0,
+              "imbalance": 0.6774193546201873,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6329032251527098
+          }
+        },
+        {
+          "step": 6,
+          "completed": 8,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 94.0,
+              "pair": 5.0,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 7.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 94.0,
+              "time_left": 100.0,
+              "triples": 1715.0,
+              "mean_duration": 29.168513119863704,
+              "mean_energy": 0.19675728343059937,
+              "mean_slack": 56.998250731387195
+            },
+            "components": {
+              "task": 74.0336901026834,
+              "pair": 11.732488445189714,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9966357944953482,
+              "pair": 0.9999999991476658,
+              "charge": 0.0,
+              "imbalance": 0.5714285712244898,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6361335951927846
+          }
+        },
+        {
+          "step": 7,
+          "completed": 11,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 91.0,
+              "pair": 5.0,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 8.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 91.0,
+              "time_left": 90.0,
+              "triples": 1712.0,
+              "mean_duration": 33.25700933705781,
+              "mean_energy": 0.20460724323089052,
+              "mean_slack": 49.193925252682725
+            },
+            "components": {
+              "task": 67.77684328344777,
+              "pair": 12.049863901334279,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.999999999852457,
+              "pair": 0.9999999991701151,
+              "charge": 0.0,
+              "imbalance": 0.49999999979166665,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6399999996653118
+          }
+        },
+        {
+          "step": 8,
+          "completed": 13,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 88.0,
+              "pair": 4.0,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 7.0,
+              "cars": 1.0,
+              "uavs": 3.0,
+              "remaining": 88.0,
+              "time_left": 80.0,
+              "triples": 1777.0,
+              "mean_duration": 32.68036014783748,
+              "mean_energy": 0.21863249382130998,
+              "mean_slack": 43.36240857821572
+            },
+            "components": {
+              "task": 63.89213920112771,
+              "pair": 9.393213825656424,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9757211373298914,
+              "pair": 0.9999999989354016,
+              "charge": 0.0,
+              "imbalance": 0.5294117643944637,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6315398702399334
+          }
+        },
+        {
+          "step": 9,
+          "completed": 19,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 86.0,
+              "pair": 7.0,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 12.0,
+              "cars": 1.0,
+              "uavs": 6.0,
+              "remaining": 86.0,
+              "time_left": 70.0,
+              "triples": 5400.0,
+              "mean_duration": 34.721296303196354,
+              "mean_energy": 0.25517913611188464,
+              "mean_slack": 33.332037037388965
+            },
+            "components": {
+              "task": 59.17124933887446,
+              "pair": 21.163772004662494,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.965883880854849,
+              "pair": 0.9999999995274944,
+              "charge": 0.0,
+              "imbalance": 0.36363636347107436,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6352197095475097
+          }
+        },
+        {
+          "step": 10,
+          "completed": 26,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 80.0,
+              "pair": 7.0,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 10.0,
+              "cars": 7.0,
+              "uavs": 7.0,
+              "remaining": 80.0,
+              "time_left": 60.0,
+              "triples": 4616.0,
+              "mean_duration": 32.404029463389584,
+              "mean_energy": 0.2539963743486388,
+              "mean_slack": 25.937391686636662
+            },
+            "components": {
+              "task": 53.888991088516136,
+              "pair": 20.537888083414916,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9782345638757537,
+              "pair": 0.9999999995130949,
+              "charge": 0.0,
+              "imbalance": 0.29999999985,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6414703689934402
+          }
+        },
+        {
+          "step": 11,
+          "completed": 36,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 73.0,
+              "pair": 10.0,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 11.0,
+              "cars": 8.0,
+              "uavs": 10.0,
+              "remaining": 73.0,
+              "time_left": 50.0,
+              "triples": 5887.0,
+              "mean_duration": 30.825887548969305,
+              "mean_energy": 0.2602074229173651,
+              "mean_slack": 17.976558528736845
+            },
+            "components": {
+              "task": 47.558108362392055,
+              "pair": 32.40483443942939,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9870198843066349,
+              "pair": 0.9999999996914041,
+              "charge": 0.0,
+              "imbalance": 0.13043478255198487,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6508885738788165
+          }
+        },
+        {
+          "step": 12,
+          "completed": 46,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              1,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              1,
+              0
+            ],
+            "features": {
+              "task": 63.0,
+              "pair": 11.0,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 14.0,
+              "cars": 6.0,
+              "uavs": 11.0,
+              "remaining": 63.0,
+              "time_left": 40.0,
+              "triples": 4067.0,
+              "mean_duration": 28.06909269056552,
+              "mean_energy": 0.26957831010552763,
+              "mean_slack": 10.937300236984075
+            },
+            "components": {
+              "task": 40.14673105479283,
+              "pair": 37.86965712252616,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9924582149465133,
+              "pair": 0.9999999997359363,
+              "charge": 0.0,
+              "imbalance": 0.04347826085066162,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6559983339548646
+          }
+        },
+        {
+          "step": 13,
+          "completed": 54,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              2,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              2,
+              0
+            ],
+            "features": {
+              "task": 53.0,
+              "pair": 10.0,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0,
+              "workers": 14.0,
+              "cars": 6.0,
+              "uavs": 10.0,
+              "remaining": 53.0,
+              "time_left": 30.0,
+              "triples": 1276.0,
+              "mean_duration": 21.944357369448344,
+              "mean_energy": 0.28834840137420487,
+              "mean_slack": 7.256269592777235
+            },
+            "components": {
+              "task": 34.344901157608426,
+              "pair": 31.494307358520835,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9986170868141203,
+              "pair": 0.9999999996824823,
+              "charge": 0.0,
+              "imbalance": 0.09090909086776859,
+              "move": 0.08944271909999159,
+              "energy_risk": 0.0
+            },
+            "score": 0.6523710535312194
+          }
+        },
+        {
+          "step": 14,
+          "completed": 64,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              4,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              4,
+              0
+            ],
+            "features": {
+              "task": 37.0,
+              "pair": 12.0,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0,
+              "workers": 20.0,
+              "cars": 6.0,
+              "uavs": 13.0,
+              "remaining": 45.0,
+              "time_left": 20.0,
+              "triples": 463.0,
+              "mean_duration": 16.203023757938443,
+              "mean_energy": 0.266957885108776,
+              "mean_slack": 3.36933045676603
+            },
+            "components": {
+              "task": 25.169724105989886,
+              "pair": 42.2722236574781,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999996026973,
+              "pair": 0.999999999763438,
+              "charge": 0.0,
+              "imbalance": 0.039999999984,
+              "move": 0.17888543819998318,
+              "energy_risk": 0.0
+            },
+            "score": 0.6512445822682875
+          }
+        },
+        {
+          "step": 15,
+          "completed": 67,
+          "decision": {
+            "source": "offline-arithmetic",
+            "position": [
+              4,
+              0
+            ]
+          },
+          "selected": {
+            "position": [
+              4,
+              0
+            ],
+            "features": {
+              "task": 5.0,
+              "pair": 3.0,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0,
+              "workers": 30.0,
+              "cars": 6.0,
+              "uavs": 13.0,
+              "remaining": 35.0,
+              "time_left": 10.0,
+              "triples": 10.0,
+              "mean_duration": 9.2,
+              "mean_energy": 0.16355340895663478,
+              "mean_slack": 0.8
+            },
+            "components": {
+              "task": 4.459259259259259,
+              "pair": 10.331777308503325,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "normalized": {
+              "task": 0.9999999977574751,
+              "pair": 0.9999999990321122,
+              "charge": 0.0,
+              "imbalance": 0.3333333329629629,
+              "move": 0.0,
+              "energy_risk": 0.0
+            },
+            "score": 0.6466666656602844
+          }
+        }
+      ]
+    }
+  },
+  "evolution_api_attempts": [
+    {
+      "mode": "evolve",
+      "attempt": 1,
+      "max_tokens": 16384,
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8686,
+        "completion_tokens": 7791,
+        "total_tokens": 16477,
+        "prompt_tokens_details": {
+          "cached_tokens": 1024
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7520
+        },
+        "prompt_cache_hit_tokens": 1024,
+        "prompt_cache_miss_tokens": 7662
+      }
+    }
+  ]
+}

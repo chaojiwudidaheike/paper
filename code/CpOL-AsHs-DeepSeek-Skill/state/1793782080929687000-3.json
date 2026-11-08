@@ -1,0 +1,660 @@
+{
+  "dataset": "/Users/yfjiazi/res-project/LLM-MDC/MDC/data/Mat/Random_1.mat",
+  "scope": 20,
+  "time_limit": 120,
+  "interval": 10,
+  "model": "deepseek-flash",
+  "policy": {
+    "formulas": {
+      "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+      "pair": "pair * (1 + 0.1 * log1p(triples)) / (1 + 0.25 * mean_energy)",
+      "charge": "charge",
+      "imbalance": "imbalance",
+      "move": "move",
+      "energy_risk": "energy_risk"
+    },
+    "weights": {
+      "task": 0.3,
+      "pair": 0.42,
+      "charge": 0.1,
+      "imbalance": 0.05,
+      "move": 0.05,
+      "energy_risk": 0.08
+    }
+  },
+  "episode": 3,
+  "session": 1793782080929687000,
+  "run": {
+    "completed": 57,
+    "total": 80,
+    "rate": 0.7125,
+    "seconds": 41.82071683299728,
+    "history": [
+      {
+        "step": 1,
+        "completed": 4,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top-ranked candidate: [1,0] maximizes distinct remaining tasks (80) and disjoint-triple potential (pair=4 with 643 triples), with lowest imbalance (0.2) among the best task/pair tier; charge, move, and energy_risk are all zero, so the score is driven by task (weight 0.3) and pair (weight 0.42). No prior feedback to override the host ranking.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 80.0,
+            "pair": 4.0,
+            "charge": 0.0,
+            "imbalance": 0.1999999998,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 4.0,
+            "cars": 0.0,
+            "uavs": 3.0,
+            "remaining": 80.0,
+            "time_left": 120.0,
+            "triples": 643.0,
+            "mean_duration": 40.66718506998445,
+            "mean_energy": 0.5520708218686445,
+            "mean_slack": 21.191290824261277
+          },
+          "components": {
+            "task": 62.44338033394318,
+            "pair": 5.788204751821253,
+            "charge": 0.0,
+            "imbalance": 0.1999999998,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9995712524632185,
+            "pair": 0.9999999982723486,
+            "charge": 0.0,
+            "imbalance": 0.1999999998,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.709871375023352
+        }
+      },
+      {
+        "step": 2,
+        "completed": 9,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Top-ranked candidate: [1,0] scores highest (0.7065), driven by task (~0.994 normalized) and pair (~0.992 normalized) with 834 feasible triples and 74 distinct feasible tasks; imbalance penalty 0.167 is tied for lowest among the top tier and move/energy_risk/charge are zero. Previous step completed 4 tasks from [1,0]; scores remain strong, so keep the host ranking.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 74.0,
+            "pair": 5.0,
+            "charge": 0.0,
+            "imbalance": 0.16666666652777776,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 6.0,
+            "cars": 0.0,
+            "uavs": 4.0,
+            "remaining": 76.0,
+            "time_left": 110.0,
+            "triples": 834.0,
+            "mean_duration": 38.08273381294964,
+            "mean_energy": 0.5185812375740434,
+            "mean_slack": 16.772182254196643
+          },
+          "components": {
+            "task": 58.06226654059226,
+            "pair": 7.403842421047874,
+            "charge": 0.0,
+            "imbalance": 0.16666666652777776,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.994409092967532,
+            "pair": 0.9917999433721834,
+            "charge": 0.0,
+            "imbalance": 0.16666666652777776,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.7065453707801878
+        }
+      },
+      {
+        "step": 3,
+        "completed": 15,
+        "decision": {
+          "position": [
+            3,
+            0
+          ],
+          "reason": "Host-ranked candidate [3,0] is first with the highest score (0.7014), driven by task (normalized 0.995, 71 feasible remaining tasks) and pair (normalized 1.0, 818 triples). Imbalance penalty is only 0.20, move penalty 0.141 is the lowest among tied high-task/pair candidates, and charge/energy_risk are zero. Step 2 completed 9 tasks from this same region, so the top-ranked position remains strong; keep the host arithmetic ranking.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            3,
+            0
+          ],
+          "features": {
+            "task": 71.0,
+            "pair": 6.0,
+            "charge": 0.0,
+            "imbalance": 0.19999999986666667,
+            "move": 0.1414213562373095,
+            "energy_risk": 0.0,
+            "workers": 8.0,
+            "cars": 0.0,
+            "uavs": 6.0,
+            "remaining": 71.0,
+            "time_left": 100.0,
+            "triples": 818.0,
+            "mean_duration": 32.8838630806846,
+            "mean_energy": 0.5029980008219618,
+            "mean_slack": 14.420537897310513
+          },
+          "components": {
+            "task": 56.89498144779481,
+            "pair": 8.905045437268184,
+            "charge": 0.0,
+            "imbalance": 0.19999999986666667,
+            "move": 0.1414213562373095,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9947879141575564,
+            "pair": 0.999999998877041,
+            "charge": 0.0,
+            "imbalance": 0.19999999986666667,
+            "move": 0.1414213562373095,
+            "energy_risk": 0.0
+          },
+          "score": 0.7013653059704253
+        }
+      },
+      {
+        "step": 4,
+        "completed": 22,
+        "decision": {
+          "position": [
+            3,
+            0
+          ],
+          "reason": "Host-ranked candidate [3,0] is first with the highest score (0.7082). Task (0.986 normalized, 63 distinct feasible tasks) and pair (0.997 normalized, 7 disjoint triples from 762 feasible) dominate the weighted sum, and it has zero move penalty and zero energy risk, with only a mild imbalance penalty (0.125). Neighboring high-pair regions [4,0]/[4,1] score marginally lower because their small task/pair gain is offset by nonzero move penalties and identical imbalance. Feedback shows completions improving across steps (4, 9, 15 so far), so the current task/pair-driven policy is performing well; keep the host arithmetic ranking rather than switching regions.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            3,
+            0
+          ],
+          "features": {
+            "task": 63.0,
+            "pair": 7.0,
+            "charge": 0.0,
+            "imbalance": 0.124999999921875,
+            "move": 0.0,
+            "energy_risk": 0.0,
+            "workers": 7.0,
+            "cars": 1.0,
+            "uavs": 7.0,
+            "remaining": 65.0,
+            "time_left": 90.0,
+            "triples": 762.0,
+            "mean_duration": 32.6246719160105,
+            "mean_energy": 0.5550729449417113,
+            "mean_slack": 12.116797900262467
+          },
+          "components": {
+            "task": 49.763803969621804,
+            "pair": 10.226910315306178,
+            "charge": 0.0,
+            "imbalance": 0.124999999921875,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9857943124244165,
+            "pair": 0.9970290563864262,
+            "charge": 0.0,
+            "imbalance": 0.124999999921875,
+            "move": 0.0,
+            "energy_risk": 0.0
+          },
+          "score": 0.7082404974135302
+        }
+      },
+      {
+        "step": 5,
+        "completed": 31,
+        "decision": {
+          "position": [
+            4,
+            0
+          ],
+          "reason": "Host-ranked candidate [4,0] is first with the highest score (0.7992). It is driven by near-maximal normalized task (0.979, 52 distinct feasible tasks) and pair (1.000, 9 disjoint triples from 637 feasible triples), with task further boosted by large mean_slack (12.8) and the mean_energy divisor on pair. Penalties are minimal: imbalance 0.217, move only 0.071, charge and energy_risk zero. Neighboring candidates [4,1], [5,0], [4,2] share identical task/pair/charge/imbalance but incur larger move penalties, so [4,0] dominates. Feedback shows completions rising (4, 9, 15, 22 completed through step 4), indicating the task/pair-driven policy is performing well; keep the host arithmetic ranking and avoid switching regions.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            4,
+            0
+          ],
+          "features": {
+            "task": 52.0,
+            "pair": 9.0,
+            "charge": 0.2307692307692307,
+            "imbalance": 0.21739130425330813,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0,
+            "workers": 11.0,
+            "cars": 2.0,
+            "uavs": 9.0,
+            "remaining": 58.0,
+            "time_left": 80.0,
+            "triples": 637.0,
+            "mean_duration": 31.68916797488226,
+            "mean_energy": 0.5089895208576527,
+            "mean_slack": 12.814756671899529
+          },
+          "components": {
+            "task": 39.94234493474366,
+            "pair": 13.14042038597848,
+            "charge": 0.2307692307692307,
+            "imbalance": 0.21739130425330813,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9785491978171733,
+            "pair": 0.9999999992389893,
+            "charge": 0.9999999566666685,
+            "imbalance": 0.21739130425330813,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "score": 0.7991596555735961
+        }
+      },
+      {
+        "step": 6,
+        "completed": 37,
+        "decision": {
+          "position": [
+            4,
+            1
+          ],
+          "reason": "Host-ranked candidate [4,1] is first with the highest score (0.7659). It is driven by near-maximal normalized task (0.868, 35 distinct feasible tasks) and pair (1.000, 7 disjoint triples from 287 feasible), with pair boosted by the triple-diversity term and damped by mean_energy. Penalties are minimal: imbalance 0.222, move only 0.071, charge and energy_risk zero. Neighboring candidates [5,1], [4,2], [5,2] share identical task/pair/charge/imbalance but incur larger move penalties, so [4,1] dominates. Feedback shows completions rising steadily (4, 9, 15, 22, 31 through step 5), indicating the task/pair-driven policy is performing well; keep the host arithmetic ranking and avoid switching regions.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            4,
+            1
+          ],
+          "features": {
+            "task": 35.0,
+            "pair": 7.0,
+            "charge": 0.4871794871794871,
+            "imbalance": 0.2222222220987654,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0,
+            "workers": 14.0,
+            "cars": 2.0,
+            "uavs": 9.0,
+            "remaining": 49.0,
+            "time_left": 70.0,
+            "triples": 287.0,
+            "mean_duration": 32.32752613240418,
+            "mean_energy": 0.505876887340302,
+            "mean_slack": 10.160278745644598
+          },
+          "components": {
+            "task": 26.08807881775913,
+            "pair": 9.733130851310907,
+            "charge": 0.4871794871794871,
+            "imbalance": 0.2222222220987654,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.8684967318484857,
+            "pair": 0.9999999989725813,
+            "charge": 0.9999999794736847,
+            "imbalance": 0.2222222220987654,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "score": 0.7659023720595273
+        }
+      },
+      {
+        "step": 7,
+        "completed": 43,
+        "decision": {
+          "position": [
+            1,
+            0
+          ],
+          "reason": "Host-ranked candidate [1,0] is first with the highest score (0.6925). It is driven by near-maximal normalized task (1.000, 28 distinct feasible tasks) and pair (0.996, 6 disjoint triples from 205 feasible), with pair boosted by triple-diversity and damped by mean_energy. Task contribution is amplified by large mean_slack (11.4) and scaled by the mean_duration/time_left factor. Penalties are minimal: imbalance 0.294, move 0.224, charge and energy_risk zero. Neighbor [1,1] is virtually tied (0.6921) but has slightly lower task, and [0,0] shares identical task/pair with a larger move penalty, so [1,0] dominates. Feedback shows completions rising steadily (22, 31, 37 through steps 4-6), so the current task/pair-driven policy performs well; keep the host arithmetic ranking and avoid unnecessary region switching.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            0
+          ],
+          "features": {
+            "task": 28.0,
+            "pair": 6.0,
+            "charge": 0.0,
+            "imbalance": 0.29411764688581316,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.0,
+            "workers": 8.0,
+            "cars": 2.0,
+            "uavs": 7.0,
+            "remaining": 43.0,
+            "time_left": 60.0,
+            "triples": 205.0,
+            "mean_duration": 34.37560975609756,
+            "mean_energy": 0.5363151969981238,
+            "mean_slack": 11.419512195121952
+          },
+          "components": {
+            "task": 19.234535469976105,
+            "pair": 8.10942388426591,
+            "charge": 0.0,
+            "imbalance": 0.29411764688581316,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.9999999994801018,
+            "pair": 0.9961931500088258,
+            "charge": 0.0,
+            "imbalance": 0.29411764688581316,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.0
+          },
+          "score": 0.6925149006159477
+        }
+      },
+      {
+        "step": 8,
+        "completed": 46,
+        "decision": {
+          "position": [
+            1,
+            6
+          ],
+          "reason": "Host-ranked candidate [1,6] is first with the highest score (0.7788). It is driven by near-maximal normalized task (0.991, 19 distinct feasible tasks) and pair (1.000, 3 disjoint triples from 92 feasible), with pair boosted by triple diversity and damped by mean_energy, and task amplified by high mean_slack (13.2). Penalties are the smallest among strong contenders: imbalance 0.143 and low move (0.424); charge and energy_risk are unchanged across the leading set, so the choice turns on move distance. Neighbors [2,6], [3,6], [4,6] share identical task/pair/charge/imbalance but accumulate larger move penalties, so [1,6] dominates. Completion feedback continues rising (22, 31, 37, 43 through step 7), so the task/pair-driven policy is performing well; keep the host arithmetic ranking and avoid unnecessary region switching.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            6
+          ],
+          "features": {
+            "task": 19.0,
+            "pair": 3.0,
+            "charge": 0.3589743589743589,
+            "imbalance": 0.14285714265306124,
+            "move": 0.4242640687119285,
+            "energy_risk": 0.1278117548314485,
+            "workers": 6.0,
+            "cars": 2.0,
+            "uavs": 5.0,
+            "remaining": 37.0,
+            "time_left": 50.0,
+            "triples": 92.0,
+            "mean_duration": 29.391304347826086,
+            "mean_energy": 0.6039297658862877,
+            "mean_slack": 13.228260869565217
+          },
+          "components": {
+            "task": 12.807051527172652,
+            "pair": 3.7878769396098195,
+            "charge": 0.3589743589743589,
+            "imbalance": 0.14285714265306124,
+            "move": 0.4242640687119285,
+            "energy_risk": 0.1278117548314485
+          },
+          "normalized": {
+            "task": 0.9912433764254961,
+            "pair": 0.9999999973599988,
+            "charge": 0.999999972142858,
+            "imbalance": 0.14285714265306124,
+            "move": 0.4242640687119285,
+            "energy_risk": 0.1278117548314485
+          },
+          "score": 0.7787920080783688
+        }
+      },
+      {
+        "step": 9,
+        "completed": 50,
+        "decision": {
+          "position": [
+            1,
+            2
+          ],
+          "reason": "Host-ranked candidate [1,2] is first with score 0.6971. It combines near-maximal normalized task (0.988, 17 distinct feasible tasks) and pair (0.998, 5 disjoint triples from 68 feasible), with pair boosted by triple diversity and damped by mean_energy, and task moderated by the duration/time_left factor. Penalties are minimal: charge 0, energy_risk 0.0055, move 0.283, imbalance 0.077. Neighbor [2,2] is close (0.6938) but has higher imbalance and move with essentially equal task/pair, so [1,2] dominates. Recent completions are rising (37, 43, 46 through steps 6-8), so the current task/pair-driven policy is performing well; keep the host arithmetic ranking and avoid unnecessary region switching.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            2
+          ],
+          "features": {
+            "task": 17.0,
+            "pair": 5.0,
+            "charge": 0.0,
+            "imbalance": 0.07692307686390532,
+            "move": 0.282842712474619,
+            "energy_risk": 0.005494505494505495,
+            "workers": 9.0,
+            "cars": 2.0,
+            "uavs": 7.0,
+            "remaining": 34.0,
+            "time_left": 40.0,
+            "triples": 68.0,
+            "mean_duration": 27.014705882352942,
+            "mean_energy": 0.4563800904977376,
+            "mean_slack": 8.661764705882353
+          },
+          "components": {
+            "task": 11.197251522988536,
+            "pair": 6.388192306553204,
+            "charge": 0.0,
+            "imbalance": 0.07692307686390532,
+            "move": 0.282842712474619,
+            "energy_risk": 0.005494505494505495
+          },
+          "normalized": {
+            "task": 0.9878767246712702,
+            "pair": 0.998037271691667,
+            "charge": 0.0,
+            "imbalance": 0.07692307686390532,
+            "move": 0.282842712474619,
+            "energy_risk": 0.005494505494505495
+          },
+          "score": 0.6971108216053945
+        }
+      },
+      {
+        "step": 10,
+        "completed": 54,
+        "decision": {
+          "position": [
+            1,
+            3
+          ],
+          "reason": "Host-ranked candidate [1,3] is first with score 0.6599, the highest supplied. It leads on the two dominant positive components: normalized pair is essentially maximal (1.000, from 4 disjoint triples over 40 feasible, boosted by triple diversity and damped by mean_energy) and normalized task is high (0.874, 17 distinct feasible tasks, amplified by mean_slack 4.5 and scaled by mean_duration/time_left). Penalties are the lowest among strong contenders: charge 0, energy_risk 0.065, imbalance 0.273, and move only 0.071. Neighbors [0,3], [1,4], [0,4] share identical task/pair/charge/imbalance/energy_risk but accumulate larger move penalties, so [1,3] dominates. Completions have been rising steadily (43, 46, 50 through steps 7-9), so the task/pair-driven policy is performing well; keep the host arithmetic ranking and avoid unnecessary region switching.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            3
+          ],
+          "features": {
+            "task": 17.0,
+            "pair": 4.0,
+            "charge": 0.0,
+            "imbalance": 0.2727272724793388,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.06501368989571123,
+            "workers": 8.0,
+            "cars": 1.0,
+            "uavs": 6.0,
+            "remaining": 30.0,
+            "time_left": 30.0,
+            "triples": 40.0,
+            "mean_duration": 24.45,
+            "mean_energy": 0.4913846153846154,
+            "mean_slack": 4.5
+          },
+          "components": {
+            "task": 11.069371399949913,
+            "pair": 4.885289768230622,
+            "charge": 0.0,
+            "imbalance": 0.2727272724793388,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.06501368989571123
+          },
+          "normalized": {
+            "task": 0.8743701417823136,
+            "pair": 0.9999999979530385,
+            "charge": 0.0,
+            "imbalance": 0.2727272724793388,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.06501368989571123
+          },
+          "score": 0.6599380489534136
+        }
+      },
+      {
+        "step": 11,
+        "completed": 57,
+        "decision": {
+          "position": [
+            2,
+            6
+          ],
+          "reason": "Host-ranked first candidate [2,6] has the highest supplied score (0.6825). It is driven by near-maximal normalized task (0.989, from 5 distinct feasible tasks with strong slack and duration/time_left scaling) and near-maximal pair (1.000, from 2 disjoint triples over 12 feasible, adjusted by triple diversity and mean_energy). Charge is 0, imbalance is low (0.143), and among the leading group it has the smallest move penalty (0.224), while energy_risk is 0.2. Neighbor [2,7] has the same task/pair/charge/imbalance/energy_risk but a larger move penalty, so [2,6] dominates. Completions have risen to 54 by step 10, so the task/pair-driven policy is performing well; keep the host ranking and avoid unnecessary switching.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            2,
+            6
+          ],
+          "features": {
+            "task": 5.0,
+            "pair": 2.0,
+            "charge": 0.0,
+            "imbalance": 0.14285714265306124,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.2,
+            "workers": 7.0,
+            "cars": 0.0,
+            "uavs": 5.0,
+            "remaining": 26.0,
+            "time_left": 20.0,
+            "triples": 12.0,
+            "mean_duration": 16.833333333333332,
+            "mean_energy": 0.5233333333333333,
+            "mean_slack": 3.1666666666666665
+          },
+          "components": {
+            "task": 3.366515837104073,
+            "pair": 2.2222460175318854,
+            "charge": 0.0,
+            "imbalance": 0.14285714265306124,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.2
+          },
+          "normalized": {
+            "task": 0.9893554380316227,
+            "pair": 0.9999999955000483,
+            "charge": 0.0,
+            "imbalance": 0.14285714265306124,
+            "move": 0.22360679774997896,
+            "energy_risk": 0.2
+          },
+          "score": 0.6824834324993551
+        }
+      },
+      {
+        "step": 12,
+        "completed": 57,
+        "decision": {
+          "position": [
+            1,
+            6
+          ],
+          "reason": "Host-ranked first candidate [1,6] has the highest supplied score (-0.00354). At this step every candidate reports zero task, pair and charge potential (no feasible WUT triples; remaining=23, time_left=10), zero imbalance and zero energy_risk, so ranking is driven entirely by the move penalty. [1,6] has the smallest displacement penalty (0.0707), edging [1,5] and [1,7] (move 0.1); the latter also has fewer commandable workers. Neighbors such as [3,6], [6,6] and [6,5] have more agents but incur larger move and/or energy_risk penalties, so they rank lower. Observation for end-of-episode learning: all scores are negative, meaning no region currently exposes a feasible task/pair opportunity — the policy is effectively just minimizing movement while waiting for triples to appear, so the task/pair formulas and weights may need review if this persists.",
+          "source": "deepseek"
+        },
+        "selected": {
+          "position": [
+            1,
+            6
+          ],
+          "features": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0,
+            "workers": 7.0,
+            "cars": 0.0,
+            "uavs": 4.0,
+            "remaining": 23.0,
+            "time_left": 10.0,
+            "triples": 0.0,
+            "mean_duration": 0.0,
+            "mean_energy": 0.0,
+            "mean_slack": 0.0
+          },
+          "components": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "normalized": {
+            "task": 0.0,
+            "pair": 0.0,
+            "charge": 0.0,
+            "imbalance": 0.0,
+            "move": 0.07071067811865475,
+            "energy_risk": 0.0
+          },
+          "score": -0.0035355339059327377
+        }
+      }
+    ]
+  },
+  "evolution_error": "DeepSeek response incomplete: length"
+}

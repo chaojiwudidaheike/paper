@@ -1,0 +1,132 @@
+[
+  {
+    "proposal": {
+      "policy": {
+        "formulas": {
+          "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+          "pair": "pair * pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy)",
+          "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+          "imbalance": "imbalance",
+          "move": "move",
+          "energy_risk": "energy_risk"
+        },
+        "weights": {
+          "task": 0.4,
+          "pair": 0.34,
+          "charge": 0.1,
+          "imbalance": 0.04,
+          "move": 0.04,
+          "energy_risk": 0.08
+        }
+      },
+      "reason": "Pair^2 amplifies parallel disjoint capacity, which limits per-step completions when pair saturates; shift weight from inert charge/energy_risk to task for balance. Unverified until replay."
+    },
+    "accepted": false,
+    "baseline_completed": 25,
+    "candidate_completed": 25
+  },
+  {
+    "proposal": {
+      "policy": {
+        "formulas": {
+          "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+          "pair": "(pair + 0.03 * (min(workers, uavs) + min(uavs, 4))) * (1 + 0.1 * log1p(triples)) * (1 + 0.2 * min(uavs, 3) + 0.05 * workers) / (1 + 0.2 * mean_energy)",
+          "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+          "imbalance": "imbalance",
+          "move": "move",
+          "energy_risk": "energy_risk"
+        },
+        "weights": {
+          "task": 0.24,
+          "pair": 0.6,
+          "charge": 0.06,
+          "imbalance": 0.02,
+          "move": 0.02,
+          "energy_risk": 0.06
+        }
+      },
+      "reason": "Hypothesis: pair raw matches per-step completions; weight pair higher and reward UAV availability for future disjoint triples, while lowering move/imbalance penalties. Unverified until replay."
+    },
+    "accepted": false,
+    "baseline_completed": 25,
+    "candidate_completed": 25
+  },
+  {
+    "proposal": {
+      "policy": {
+        "formulas": {
+          "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+          "pair": "pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) * (1 + 1 / (1 + mean_slack)) / (1 + 0.25 * mean_energy)",
+          "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+          "imbalance": "imbalance",
+          "move": "move",
+          "energy_risk": "energy_risk"
+        },
+        "weights": {
+          "task": 0.26,
+          "pair": 0.46,
+          "charge": 0.1,
+          "imbalance": 0.04,
+          "move": 0.04,
+          "energy_risk": 0.1
+        }
+      },
+      "reason": "Pair sets per-step throughput but ignored urgency; adding a mean_slack boost makes it prefer equal-count regions whose triples are expiring, and shifting inert task weight to pair sharpens that choice. Unverified until replay."
+    },
+    "accepted": false,
+    "baseline_completed": 95,
+    "candidate_completed": 95
+  },
+  {
+    "proposal": {
+      "policy": {
+        "formulas": {
+          "task": "task * (1 + 1 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+          "pair": "pair * sqrt(pair) * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy)",
+          "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+          "imbalance": "imbalance",
+          "move": "move",
+          "energy_risk": "energy_risk"
+        },
+        "weights": {
+          "task": 0.32,
+          "pair": 0.42,
+          "charge": 0.08,
+          "imbalance": 0.04,
+          "move": 0.04,
+          "energy_risk": 0.1
+        }
+      },
+      "reason": "Pair tracks per-step completions but saturates with task in normalization; sqrt sharpening (milder than failed pair^2) breaks those ties toward max disjoint throughput, funded by inert charge weight. Unverified until replay."
+    },
+    "accepted": false,
+    "baseline_completed": 95,
+    "candidate_completed": 95
+  },
+  {
+    "proposal": {
+      "policy": {
+        "formulas": {
+          "task": "task * (1 + 2 / (1 + mean_slack)) / (1 + mean_duration / max(time_left, 1))",
+          "pair": "pair * (1 + 0.1 * log1p(triples)) * (1 + 0.04 * (workers + uavs)) / (1 + 0.25 * mean_energy)",
+          "charge": "charge * (1 + energy_risk) * (1 + 0.2 * log1p(cars))",
+          "imbalance": "imbalance",
+          "move": "move",
+          "energy_risk": "energy_risk"
+        },
+        "weights": {
+          "task": 0.42,
+          "pair": 0.34,
+          "charge": 0.08,
+          "imbalance": 0.04,
+          "move": 0.04,
+          "energy_risk": 0.08
+        }
+      },
+      "reason": "Late steps left 7 infeasible tasks, suggesting window expiry. Strengthen low-mean_slack urgency in task and raise task weight over pair so expiring tasks are cleared before they become infeasible. Unverified until replay."
+    },
+    "accepted": false,
+    "baseline_completed": 95,
+    "candidate_completed": 95
+  }
+]
